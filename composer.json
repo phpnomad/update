@@ -30,6 +30,9 @@
             "email": "alex@standiford.us"
         }
     ],
+    "require": {
+        "phpnomad/event": "dev-main"
+    },
     "require-dev": {
         "phpnomad/tests": "^0.1.0"
     },
