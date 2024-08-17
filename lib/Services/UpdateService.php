@@ -2,6 +2,7 @@
 
 namespace PHPNomad\Update\Services;
 
+use PHPNomad\Di\Interfaces\InstanceProvider;
 use PHPNomad\Events\Interfaces\EventStrategy;
 use PHPNomad\Update\Events\UpgradeRoutinesRequested;
 use PHPNomad\Update\Interfaces\UpgradeRoutine;
@@ -11,8 +12,9 @@ class UpdateService
 {
     protected EventStrategy $events;
 
-    public function __construct(EventStrategy $events)
+    public function __construct(EventStrategy $events, InstanceProvider $provider)
     {
+        $this->provider = $provider;
         $this->events = $events;
     }
 
@@ -31,7 +33,7 @@ class UpdateService
 
         Arr::sort($routines, fn($a, $b) => version_compare($a::getTargetVersion(), $b::getTargetVersion()));
 
-        return $routines;
+        return Arr::map($routines, fn(string $instance) => $this->provider->get($instance));
     }
 
     /**
