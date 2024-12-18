@@ -8,12 +8,6 @@
     "scripts": {
         "php-cs-fixer": "php-cs-fixer fix"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/phpnomad/tests.git"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "PHPNomad\\Update\\": "lib/"
@@ -31,7 +25,7 @@
         }
     ],
     "require": {
-        "phpnomad/event": "dev-main"
+        "phpnomad/event": "^1.0"
     },
     "require-dev": {
         "phpnomad/tests": "^0.1.0"
