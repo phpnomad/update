@@ -12,6 +12,8 @@ class UpdateService
 {
     protected EventStrategy $events;
 
+    protected InstanceProvider $provider;
+
     public function __construct(EventStrategy $events, InstanceProvider $provider)
     {
         $this->provider = $provider;
