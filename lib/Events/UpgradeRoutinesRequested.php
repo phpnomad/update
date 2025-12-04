@@ -49,11 +49,13 @@ class UpgradeRoutinesRequested implements Event
      * @return $this
      */
     public function maybeRegisterRoutines(string $routine, string ...$routines) {
-        if (version_compare($routine::getTargetVersion(), $this->currentVersion, '>') &&
-            version_compare($routine::getTargetVersion(), $this->targetVersion, '<=')) {
-            $this->routines = Arr::merge($this->routines, [$routine], $routines);
+        foreach(Arr::merge([$routine], $routines) as $item) {
+            if (version_compare($item::getTargetVersion(), $this->currentVersion, '>') &&
+                version_compare($item::getTargetVersion(), $this->targetVersion, '<=')) {
+                $this->routines = Arr::merge($this->routines, [$item], $routines);
+            }
         }
-        
+
         return $this;
     }
 
