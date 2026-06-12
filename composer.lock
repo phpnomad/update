@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eadc309e4a5eaa0225803e31c803d79b",
+    "content-hash": "48b76e06a75cb0ed52b6bc2bb138d273",
     "packages": [
         {
             "name": "phpnomad/event",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpnomad/event.git",
-                "reference": "c2f8f4c19bfd017086dbffb0510e20b06d7fa533"
+                "reference": "b418d8fc90af18b7cb37e118795f9dd92ffeb538"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpnomad/event/zipball/c2f8f4c19bfd017086dbffb0510e20b06d7fa533",
-                "reference": "c2f8f4c19bfd017086dbffb0510e20b06d7fa533",
+                "url": "https://api.github.com/repos/phpnomad/event/zipball/b418d8fc90af18b7cb37e118795f9dd92ffeb538",
+                "reference": "b418d8fc90af18b7cb37e118795f9dd92ffeb538",
                 "shasum": ""
             },
             "require-dev": {
-                "phpnomad/tests": "^0.1.0"
+                "phpnomad/tests": "^0.1.0 || ^0.3.0"
             },
             "type": "library",
             "autoload": {
@@ -42,9 +42,9 @@
             "homepage": "https://github.com/phpnomad/core",
             "support": {
                 "issues": "https://github.com/phpnomad/event/issues",
-                "source": "https://github.com/phpnomad/event/tree/1.0.0"
+                "source": "https://github.com/phpnomad/event/tree/1.0.1"
             },
-            "time": "2024-12-18T17:10:47+00:00"
+            "time": "2026-06-12T10:56:48+00:00"
         }
     ],
     "packages-dev": [
@@ -4681,10 +4681,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
