@@ -4,7 +4,6 @@ namespace PHPNomad\Update\Events;
 
 use PHPNomad\Events\Interfaces\Event;
 use PHPNomad\Update\Interfaces\UpgradeRoutine;
-use PHPNomad\Utils\Helpers\Arr;
 
 class UpgradeRoutinesRequested implements Event
 {
@@ -42,21 +41,44 @@ class UpgradeRoutinesRequested implements Event
     }
 
     /**
-     * Conditionally register an upgrade routine.
+     * Registers each of the given routines whose target version falls inside
+     * this upgrade, after the current version and up to the target version.
+     * A routine outside that range is skipped, and a routine that is already
+     * registered is not added again.
      *
-     * @param class-string<UpgradeRoutine> $routine The upgrade routine to register.
+     * @param class-string<UpgradeRoutine> $routine The first routine to consider.
+     * @param class-string<UpgradeRoutine> ...$routines Any further routines to consider.
      *
      * @return $this
      */
     public function maybeRegisterRoutines(string $routine, string ...$routines) {
-        foreach(Arr::merge([$routine], $routines) as $item) {
-            if (version_compare($item::getTargetVersion(), $this->currentVersion, '>') &&
-                version_compare($item::getTargetVersion(), $this->targetVersion, '<=')) {
-                $this->routines = Arr::merge($this->routines, [$item], $routines);
+        array_unshift($routines, $routine);
+
+        foreach ($routines as $item) {
+            if (in_array($item, $this->routines, true) || !$this->isInRange($item)) {
+                continue;
             }
+
+            $this->routines[] = $item;
         }
 
         return $this;
+    }
+
+    /**
+     * Whether the routine's target version is after the current version and
+     * no later than the target version.
+     *
+     * @param class-string<UpgradeRoutine> $routine
+     *
+     * @return bool
+     */
+    private function isInRange(string $routine): bool
+    {
+        $version = $routine::getTargetVersion();
+
+        return version_compare($version, $this->currentVersion, '>')
+            && version_compare($version, $this->targetVersion, '<=');
     }
 
     /**

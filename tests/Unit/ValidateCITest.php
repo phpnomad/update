@@ -1,8 +1,8 @@
 <?php
 
-namespace Phoenix\Tests\Unit;
+namespace PHPNomad\Update\Tests\Unit;
 
-use Phoenix\Core\Tests\TestCase;
+use PHPNomad\Update\Tests\TestCase;
 
 class ValidateCITest extends TestCase
 {
