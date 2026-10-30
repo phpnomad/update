@@ -9,6 +9,8 @@ class UpgradeRoutinesRequested implements Event
 {
     private string $currentVersion;
     private string $targetVersion;
+
+    /** @var class-string<UpgradeRoutine>[] */
     private array $routines = [];
 
     /**
@@ -84,7 +86,7 @@ class UpgradeRoutinesRequested implements Event
     /**
      * Get the registered upgrade routines.
      *
-     * @return UpgradeRoutine[] An array of registered upgrade routines.
+     * @return class-string<UpgradeRoutine>[] The registered upgrade routine class names.
      */
     public function getRoutines(): array {
         return $this->routines;

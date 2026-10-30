@@ -35,7 +35,14 @@ class UpdateService
 
         Arr::sort($routines, fn($a, $b) => version_compare($a::getTargetVersion(), $b::getTargetVersion()));
 
-        return Arr::map($routines, fn(string $instance) => $this->provider->get($instance));
+        $instances = [];
+
+        /** @var class-string<UpgradeRoutine>[] $routines */
+        foreach ($routines as $routine) {
+            $instances[] = $this->provider->get($routine);
+        }
+
+        return $instances;
     }
 
     /**
