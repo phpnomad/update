@@ -17,9 +17,10 @@ namespace
 nodejs
 npm
 php
+phpnomad
 PHPNomad
 PHPUnit
-readmephpnomad
+readme
 RSS
 runtime
 SDK
